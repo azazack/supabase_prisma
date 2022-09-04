@@ -1,11 +1,9 @@
 
-import {abortNavigation, defineNuxtRouteMiddleware, navigateTo, useSupabaseToken} from "#imports";
 const token = useSupabaseToken()
 
-export default defineNuxtRouteMiddleware((to,from) => {
+export default defineNuxtRouteMiddleware(() => {
     if(!token.value){
+        console.log(token)
         return navigateTo('/login')
-
     }
-        return abortNavigation()
 })
